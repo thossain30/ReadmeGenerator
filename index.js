@@ -68,8 +68,15 @@ function writeToFile(fileName, data) {
 function init() {
     inquirer.prompt(questions)
     .then(answers => {
+        const gitUsername = `https://api.github.com/users/${answers.username}`
         const readme = generateMarkdown(answers);
-        writeToFile("README.md", readme);
+        fetch(gitUsername)
+        .then(response =>{
+            console.log(response);
+            var imageURL = response.data.avatar_url;
+            answers.image = imageURL;
+            writeToFile("README.md", readme);
+        })
     })
 }
 
