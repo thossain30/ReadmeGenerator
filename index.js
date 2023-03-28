@@ -13,6 +13,11 @@ const questions = [
     },
     {
         type: "input",
+        message: "What is your email address?",
+        name: "email"
+    },
+    {
+        type: "input",
         message: "What is your Project title?",
         name: "title",
         default: "Readme Generator"
@@ -33,13 +38,15 @@ const questions = [
         type: "input",
         message: "What are the steps required to install your project?",
         name: "install",
-        default: "Step1: Run npm install and Step2: Run node index.js"
+        default: "Step 1: Run npm install and Step 2: Run node index.js"
     },
     {
         type: "input",
         message: "Write instructions for using your project.",
         name: "usage",
-        default: "1.Run node index.js 2.Answers the questions 3.The README.md file will be created."
+        default: `1. Run node index.js 
+                  2.Answers the questions 
+                  3.The README.md file will be created.`
     },
     {
         type: "input",
@@ -50,6 +57,17 @@ const questions = [
         type: "input",
         message: "Provide examples on how to run tests.",
         name: "test"
+    },
+    {
+        type: "list",
+        message: "Choose a license to use.",
+        choices: [
+            "Apache",
+            "IBM",
+            "MIT",
+            "Perl"
+        ],
+        name: "license"
     }
 ];
 
@@ -70,13 +88,7 @@ function init() {
     .then(answers => {
         const gitUsername = `https://api.github.com/users/${answers.username}`
         const readme = generateMarkdown(answers);
-        fetch(gitUsername)
-        .then(response =>{
-            console.log(response);
-            var imageURL = response.data.avatar_url;
-            answers.image = imageURL;
-            writeToFile("README.md", readme);
-        })
+        writeToFile("README.md", readme);
     })
 }
 

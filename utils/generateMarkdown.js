@@ -25,8 +25,6 @@ ${data.desc}
 * [Test](#test)
 * [Questions](#questions)
 * [License](#license)
-* [Author] (#Author)
-* [Badges](#badges)
 
 ## Installation
 ${data.install}
@@ -41,7 +39,7 @@ ${data.usage}
 ${data.test}
 
 ## Questions 
-If you have any questions, contact ${data.username} on Github.
+If you have any questions, contact ${data.username} on Github, or reach out via email at ${data.email}.
 `;
 }
 
