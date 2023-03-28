@@ -44,9 +44,12 @@ const questions = [
         type: "input",
         message: "Write instructions for using your project.",
         name: "usage",
-        default: `1. Run node index.js 
-                  2.Answers the questions 
-                  3.The README.md file will be created.`
+        default: 
+`
+* Run node index.js 
+* Answers the questions
+* The README.md file will be created.
+`
     },
     {
         type: "input",
@@ -88,7 +91,7 @@ function init() {
     .then(answers => {
         const gitUsername = `https://api.github.com/users/${answers.username}`
         const readme = generateMarkdown(answers);
-        writeToFile("README.md", readme);
+        writeToFile("./output/README.md", readme);
     })
 }
 
